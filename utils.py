@@ -24,19 +24,30 @@ def chinese_word_cut(mytext):
             result_list.append(word)
     return " ".join(result_list)
 
-def print_FeatureVector_textContent(word,tfidf_weight):
-    # 打印特征向量文本内容
-    resName = "Tfidf_Result.txt"
-    result = codecs.open(resName, 'w', 'utf-8')
+def print_FeatureVector_textContent(word, tfidf_weight):
+    # 使用Streamlit展示特征向量文本内容
+    st.write("特征向量文本内容：")
     for j in range(len(word)):
-        result.write(word[j] + ' ')
-    result.write('\r\n\r\n')
-    #每类文本的tf-idf词语权重，第一个for遍历所有文本，第二个for便利某一类文本下的词语权重
+        st.write(word[j] + ' ')
+    st.write("\n")
+    
+    st.write("TF-IDF词语权重：")
     for i in range(len(tfidf_weight)):
         for j in range(len(word)):
-            result.write(str(tfidf_weight[i][j]) + ' ')
-        result.write('\r\n\r\n')
-    result.close()
+            st.write(str(tfidf_weight[i][j]) + ' ', end='')
+        st.write("\n")
+    
+    # 将数据转换为字符串，供下载使用
+    content_to_download = "\n".join(word) + "\n\n" + "\n".join(map(str, tfidf_weight.flatten()))
+    
+    # 创建一个下载按钮
+    downloaded_filename = "Tfidf_Result.txt"
+    st.download_button(
+        label="下载TF-IDF结果",
+        data=content_to_download,
+        file_name=downloaded_filename,
+        mime="text/plain",
+    )
 
 def KmeansAlgorithm(data,tfidf_weight,max_iter_value=100,n_init_value=1):
     '''
