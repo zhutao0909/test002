@@ -49,7 +49,7 @@ def word_frequency_analysis(df):
 
     words = list(jieba.cut(all_text, cut_all=False))
 
-    with open(r'F:\python练习代码\pythonProject8\MOOC\input\cn_stopwords.txt', encoding='utf-8') as f:  # 添加屏蔽词汇
+    with open(r'cn_stopwords.txt', encoding='utf-8') as f:  # 添加屏蔽词汇
         con = f.readlines()
         stop_words = set()  # 集合可以去重
         for i in con:
