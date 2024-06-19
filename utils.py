@@ -14,7 +14,7 @@ def chinese_word_cut(mytext):
     seg_list_exact = jieba.cut(new_data, cut_all=True)
     result_list = []
     # 加载停用词库
-    with open(r'F:\python练习代码\pythonProject8\MOOC\input\cn_stopwords.txt', encoding='utf-8') as f:  # 可根据需要打开停用词库，然后加上不想显示的词语
+    with open(r'cn_stopwords.txt', encoding='utf-8') as f:  # 可根据需要打开停用词库，然后加上不想显示的词语
         stop_words = set()
         for i in f.readlines():
             stop_words.add(i.replace("\n", ""))  # 去掉读取每一行数据的\n
