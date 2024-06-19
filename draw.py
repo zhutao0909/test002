@@ -1,4 +1,4 @@
-import re
+import os
 from collections import Counter
 import streamlit as st
 import pandas as pd
@@ -6,6 +6,10 @@ from sklearn.manifold import TSNE
 from wordcloud import WordCloud
 import jieba
 from matplotlib import pyplot as plt
+import matplotlib as mpl
+
+# 静态文件路径前缀，假设所有文件都在同级目录
+BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
 
 def set_chinese_font():
