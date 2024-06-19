@@ -66,7 +66,7 @@ def word_frequency_analysis(df):
 
 
 def word_cloud(words_space_split):
-    wordcloud = WordCloud(font_path='‪C:\Windows\Fonts\STCAIYUN.TTF',
+    wordcloud = WordCloud(font_path='‪SIMHEI.TTF',
                           width=800, height=600,
                           background_color='white',
                           max_words=200,
