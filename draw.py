@@ -70,7 +70,9 @@ def word_frequency_analysis(df):
 
 
 def word_cloud(words_space_split):
-    wordcloud = WordCloud(font_path='‪SIMHEI.TTF',
+    # 使用os.path.join获取正确的相对路径
+    font_path = os.path.join(os.getcwd(), 'SIMHEI.TTF')  # 确保文件名和扩展名正确
+    wordcloud = WordCloud(font_path=font_path,
                           width=800, height=600,
                           background_color='white',
                           max_words=200,
