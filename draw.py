@@ -34,22 +34,24 @@ def word_fre_draw(a, str):
 
 def is_chinese_word(word):
     for char in word:
-        # 这里应该是 try 块的开始
+        # 正则表达式匹配中文字符的范围
         try:
-            # 正则表达式匹配中文字符
+            # 检查每个字符是否在中文字符范围内
             if not re.match(r'[\u4e00-\u9fff]', char):
                 return False
         except re.error as e:
-            # 处理正则表达式错误
+            # 打印错误信息，但不要在这里中断函数，继续循环
             print(f"正则表达式错误：{e}")
-            return False
-    # 如果所有字符都是中文字符，则返回 True
+            # 可以选择返回 False 或者继续循环
+            continue
+    # 如果所有字符检查完毕且都是中文字符，则返回 True
     return True
 
 def correct(a, stop_words):
     b = []
     for word in a:
-        if len(word) > 1 and is_chinese_word(word) and word not in stop_words:
+        # 确保 word 是字符串，并且长度大于 1，然后检查是否所有字符都是中文字符
+        if isinstance(word, str) and len(word) > 1 and is_chinese_word(word) and word not in stop_words:
             b.append(word)
     return b
 
