@@ -34,11 +34,12 @@ def word_fre_draw(a, str):
 
 def is_chinese_word(word):
     for char in word:
+        # 正则表达式匹配中文字符
         try:
             if not re.match(r'[\u4e00-\u9fff]', char):
                 return False
         except re.error as e:
-            # 打印正则表达式错误信息
+            # 处理正则表达式错误
             print(f"正则表达式错误：{e}")
             return False
     return True
